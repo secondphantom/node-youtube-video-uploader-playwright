@@ -1,6 +1,6 @@
 {
   "name": "youtube-video-uploader-playwright",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,8 +10,8 @@
     "test": "node dist/test/test.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Second Phantom <second2phantom@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.11.18",
     "dotenv": "^16.0.3",

@@ -368,8 +368,6 @@ export default class YoutubeUploader {
     options?: UploadVideoOptions
   ) => {
     this.checkInit();
-    if (!this.page) return;
-
     const { videoPath } = input;
 
     await this.existClick("#create-icon");
@@ -396,8 +394,21 @@ export default class YoutubeUploader {
   };
 
   uploadBulkVideos = async (inputs: UploadBulkVideoInput) => {
+    const videoIds: string[] = [];
+    const failInputs: UploadBulkVideoInput[] = [];
     for (const { input, options } of inputs) {
-      await this.uploadVideo(input, options);
+      await this.uploadVideo(input, options)
+        .then((videoId) => {
+          videoIds.push(videoId);
+        })
+        .catch((e) => {
+          console.log(e);
+          failInputs.push(inputs);
+        });
     }
+    return {
+      videoIds,
+      failInputs,
+    };
   };
 }
